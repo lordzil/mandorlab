@@ -5,7 +5,8 @@ import { useTranslation } from 'next-i18next'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 export async function getStaticProps(context) {
-  // extract the locale identifier from the URL
+  try {
+    // extract the locale identifier from the URL
   const { locale } = context
 
   return {
@@ -14,6 +15,10 @@ export async function getStaticProps(context) {
       ...(await serverSideTranslations(locale)),
     },
   }
+  } catch (error) {
+    return {}
+  }
+  
 }
 
 
