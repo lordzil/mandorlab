@@ -1,0 +1,95 @@
+/** @type {import('tailwindcss').Config} */
+import { black as _black, white as _white, stone } from 'tailwindcss/colors'
+
+export const content = [
+  './pages/**/*.{js,ts,jsx,tsx,mdx}',
+  './components/**/*.{js,ts,jsx,tsx,mdx}',
+  './app/**/*.{js,ts,jsx,tsx,mdx}',
+]
+export const theme = {
+  colors: {
+    transparent: 'transparent',
+    current: 'currentColor',
+    black: _black,
+    white: _white,
+    gray: stone,
+  },
+  extend: {
+    fontFamily: {
+      'tilt': ['tilt warp'],
+      'lato': ['lato' ],
+    },
+    backgroundImage: {
+      'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
+      'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+      'doodle': "url('/public/banner.svg')",
+    },
+    colors: {
+      'red': {
+        light: '#FF7B7B',
+        DEFAULT: '#D62A2A',
+        dark: '#851B1B',
+        50: '#FFE8E8',
+        100: '#FFC6C6',
+        200: '#FFA1A1',
+        300: '#FF7B7B',
+        400: '#ff5656',
+        500: '#ff3131',
+        600: '#d62a2a',
+        700: '#ad2323',
+        800: '#851b1b',
+        900: '#5c1414',
+        950: '#330d0d',
+      },
+      'orange': {
+        light: '#FED7AA',
+        DEFAULT: '#FB923C',
+        dark: '#C2410C',
+        50: '#FFF7ED',
+        100: '#FFEDD5',
+        200: '#FED7AA',
+        300: '#FDBA74',
+        400: '#FB923C',
+        500: '#F97316',
+        600: '#EA580C',
+        700: '#C2410C',
+        800: '#9A3412',
+        900: '#7C2D12',
+        950: '#431407',
+      },
+      'brown': {
+        light: '#D7BCB5',
+        DEFAULT: '#A87363',
+        dark: '#613832',
+        50: '#F7EDEB',
+        100: '#E7D5D0',
+        200: '#D7BCB5',
+        300: '#C8A499',
+        400: '#B88B7E',
+        500: '#A87363',
+        600: '#905F53',
+        700: '#794C42',
+        800: '#613832',
+        900: '#4A2521',
+        950: '#321111',
+      },
+      'yellow': {
+        light: '#FED7AA',
+        DEFAULT: '#FB923C',
+        dark: '#C2410C',
+        50: '#FFF7ED',
+        100: '#FFEDD5',
+        200: '#FED7AA',
+        300: '#FDBA74',
+        400: '#FB923C',
+        500: '#F97316',
+        600: '#EA580C',
+        700: '#C2410C',
+        800: '#9A3412',
+        900: '#7C2D12',
+        950: '#431407',
+      },
+    }
+  },
+}
+export const plugins = []
