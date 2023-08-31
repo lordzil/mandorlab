@@ -8,8 +8,7 @@ const Header = () => {
   return (
     <header className="flex flex-col">
       <div className="flex flex-row px-12 mt-5">
-        <div className="flex self-end">
-          
+        <div className="flex self-end"> 
         </div>  
         <div className="flex-auto"></div>
         <LanguageSwitcher />

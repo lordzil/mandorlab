@@ -1,10 +1,31 @@
-import OnlyFooterLayout from '@/components/OnlyFooterLayout';
+import RootLayout from '@/components/layout/PageLayout';
+import { useTranslation } from 'next-i18next'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+
+export async function getStaticProps(context) {
+  try {
+    // extract the locale identifier from the URL
+  const { locale } = context
+
+  return {
+    props: {
+      // pass the translation props to the page component
+      ...(await serverSideTranslations(locale)),
+    },
+  }
+  } catch (error) {
+    return {}
+  }
+  
+}
 
 export const Newsletter = () => {
+  const { t } = useTranslation()
+
   return (
-    <div className="text-center max-w-[80%] mx-auto">
+    <main className='flex flex-col max-h-100vh mx-auto max-w-3xl px-4 pt-32 pb-32 scroll-smooth md:scroll-auto'>
       <h3 className="text-3xl md:text-4xl font-bold text-gray-900 mt-20 !leading-[1.4]">
-        Get our Weekly Developer&apos;s Tips via Email
+        Get in touch via Email
       </h3>
       <div className="">
         <input
@@ -20,12 +41,12 @@ export const Newsletter = () => {
           Try It
         </button>
       </div>
-    </div>
+    </main>
   );
 };
 
 Newsletter.getLayout = (page) => (
-  <OnlyFooterLayout>{page}</OnlyFooterLayout>
+  <RootLayout>{page}</RootLayout>
 );
 
 export default Newsletter;

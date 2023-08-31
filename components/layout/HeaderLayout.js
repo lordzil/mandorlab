@@ -1,10 +1,11 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { usePathname } from 'next/navigation';
 import { scrollTo } from "next/router";
 import { useTranslation } from 'next-i18next'
 import Link from 'next/link';
 import Image from 'next/image';
 import LanguageSwitcher from '../LanguageSwitcher';
+import { Button, Modal, notification } from 'antd'
 
 const menuItems = [
   { label: `NAV_LABEL_ABOUT_US`, url: `/` },
@@ -14,14 +15,12 @@ const menuItems = [
   { label: `NAV_LABEL_REVIEW`, url: `/review` },
   { label: `NAV_LABEL_SUPPORT`, url: `/newsletter` },
   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/projects` },
-  { label: `NAV_LABEL_NEW_QUOTATION`, url: `/dashboard/analytics` },
 ];
 
 const ActiveMenuLink = ({ children, href }) => {
   const pathname = usePathname();
   const active = href === pathname;
   //console.log(pathname)
-
   return (
     <Link
       href={href}
@@ -38,10 +37,22 @@ const ActiveMenuLink = ({ children, href }) => {
 };
 
 const Header = () => {
-  const [search, setSearch] = useState('');
+  const [api, contextHolder] = notification.useNotification();
+  const openNotification = (placement) => {
+    api.info({
+      message: `Notification ${placement}`,
+      description:
+        'Click the icon below to open the quotation request form!',
+      placement,
+      style: {
+        bottom: 100, // Adjust the offset value as needed
+      },
+    })
+  };
   const { t } = useTranslation();
   return (
     <header className="flex flex-col">
+      {contextHolder}
       <div className="flex flex-row px-12 mb-5">
         <div className="flex self-end">
           <Link href="/">
@@ -66,9 +77,14 @@ const Header = () => {
                 <ActiveMenuLink href={url}>{t(label)}</ActiveMenuLink>
               </li>
             ))}
+            <li>
+                <p className='text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4'
+                 onClick={() => openNotification('bottomRight')}>{t("NAV_LABEL_NEW_QUOTATION")}</p>
+              </li>
           </ul>
         </nav>
       </div>
+      
     </header>
   );
 };
