@@ -21,7 +21,12 @@ export async function getStaticProps(context) {
 }
 
 const Projects = () => {
-  return <div>User projects here...</div>;
+  return (
+    <div>
+      User projects here...
+
+    </div>
+    );
 };
 
 Projects.getLayout = (page) => (

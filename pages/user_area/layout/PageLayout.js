@@ -1,22 +1,20 @@
-import Link from "next/link";
-import Header from "./HeaderLayout";
-import SidebarLayout from "./SidebarLayout";
+import { Layout } from "antd";
+
+import HeaderLayout from "./HeaderLayout";
+import SiderLayout from "./SiderLayout";
+
+
+
 
 const RootLayout = ({ children }) => {
   return (
-    <div>
-    
-    
-    <div className="flex flex-row">
-      <div className="flex h-screen sticky top-0 pr-5 shadow-md">
-        <SidebarLayout />
-      </div>
-      <div className="flex-grow">
-        <Header />
-        <main className="my-0 py-16">{children}</main>
-      </div>
-    </div>
-    </div>
+    <Layout>    
+      <SiderLayout />
+      <Layout>
+        <HeaderLayout />
+        {children}
+      </Layout>
+    </Layout>
   );
 };
 

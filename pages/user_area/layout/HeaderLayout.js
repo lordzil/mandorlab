@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useTranslation } from 'next-i18next'
 import LanguageSwitcher from '@/components/LanguageSwitcher';
 
-const Header = () => {
+const HeaderLayout = () => {
   const [search, setSearch] = useState('');
   const { t } = useTranslation();
   return (
@@ -20,4 +20,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderLayout;
