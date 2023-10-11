@@ -36,6 +36,9 @@ export function AuthProvider({ children }) {
     console.log(jwtToken)
     setCookie('user_jwt', jwtToken, { path: '/', maxAge: 36000 }); // Adjust maxAge accordingly
     setUser({ isAuth: true , username: tokenPayload.sub });
+    localStorage.setItem('username', tokenPayload.sub)
+    localStorage.setItem('email', tokenPayload.auth)
+    localStorage.setItem('userid', tokenPayload.id)
     console.log('loggend in')
   };
 
@@ -44,6 +47,7 @@ export function AuthProvider({ children }) {
     console.log("logging out")
     removeCookie('user_jwt');
     setUser({ isAuth: false, username: null });
+    localStorage.clear()
   };
 
   return (

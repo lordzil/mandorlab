@@ -4,6 +4,9 @@ import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import React, { useState } from 'react';
 import Favicon from '@/public/favicon.ico'
+import { MenuOutlined } from '@ant-design/icons';
+
+
 
 const { Sider } = Layout;
 const ActiveMenuLink = ({ children, href }) => {
@@ -42,9 +45,9 @@ const items = [
 
 const siderStyle = {
   textAlign: 'center',
-  lineHeight: '120px',
+  lineHeight: '50px',
   color: '#fff',
-  backgroundColor: '#fffff0',
+  backgroundColor: '#ffffff',
   height: '100vh',
   display: 'flex',
   flexDirection: 'column'
@@ -53,7 +56,11 @@ const siderStyle = {
 
 const menuStyle = {
   textAlign: 'left',
+  lineHeight: '50px',
+  color: '#000000',
   backgroundColor: '#ffffff',
+  display: 'flex',
+  flexDirection: 'column'
 };
 
 const SiderLayout = ({ children }) => {
@@ -76,6 +83,20 @@ const SiderLayout = ({ children }) => {
             />
           </Link>
         </div>
+        <div
+            className='mx-8'
+            onClick={toggleCollapse}
+            style={{
+              color:'#000000',
+              textAlign:'left',
+              verticalAlign: 'middle',
+              height: 'fit-content'
+          }}
+          >
+          
+            {collapsed ? <MenuOutlined /> : <MenuOutlined />}
+          
+        </div>
         <Menu defaultSelectedKeys={['projects']} mode="inline" style={menuStyle}>
           {items.map((item) => (
             <Menu.Item key={item.key} icon={item.icon}>
@@ -85,14 +106,6 @@ const SiderLayout = ({ children }) => {
             </Menu.Item>
           ))}
         </Menu>
-        <div
-            onClick={toggleCollapse}
-            style={{
-              color:'#000000',
-          }}
-          >
-          {collapsed ? '>' : '<'}
-        </div>
       </div>
     </Sider>
   );

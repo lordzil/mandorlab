@@ -1,3 +1,4 @@
+
 import RootLayout from './layout/PageLayout';
 import DashboardLayout from '@/pages/user_area/layout/ContentLayout';
 
@@ -21,7 +22,15 @@ export async function getStaticProps(context) {
 }
 
 const Account = () => {
-  return <div>Account screen</div>;
+  return (
+  <div>
+    <div>
+      <p>username: </p>
+      <p>email: </p>
+      
+    </div>
+  </div>
+  );
 };
 
 Account.getLayout = (page) => (

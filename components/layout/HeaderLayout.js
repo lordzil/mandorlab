@@ -68,14 +68,13 @@ const Header = () => {
   return (
     <header className="flex flex-col">
       {contextHolder}
-      <div className="flex flex-row px-12 mb-5">
-        <div className="flex self-end">
+      <div className="flex flex-row px-5 md:px-12 mb-5">
+        <div className="flex self-end w-40 md:w-200">
           <Link href="/">
             <Image
-              width={300}
+              width={200}
               height={0}
               src="/logo.png"
-              className="w-200 md:w-120"
               alt="logo"
             />
           </Link>
