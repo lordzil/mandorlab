@@ -2,8 +2,7 @@ import { EyeInvisibleOutlined, EyeTwoTone } from '@ant-design/icons';
 import React, { useState } from 'react';
 import { Modal, Button, Form, Input, message } from 'antd';
 //import { getCookie, setCookie } from 'cookies-next';
-import { useAuth } from './AuthContext';
-import RegisterModal from './registerModal';
+//import { useAuth } from './AuthContext';
 
 const formItemLayout = {
     labelCol: {
@@ -14,8 +13,7 @@ const formItemLayout = {
     },
 };
 
-const LoginModal = ({ open, setOpen }) => {
-    const {login} = useAuth();
+const RegisterModal = ({ open, setOpen }) => {
     const [form] = Form.useForm();
     const [loading, setLoading] = useState(false);
     const [passwordVisible, setPasswordVisible] = React.useState(false);
@@ -29,23 +27,18 @@ const LoginModal = ({ open, setOpen }) => {
             span: 12,
         },
     };
-    const [registerOpen, setRegisterOpen] = useState(false);
-    const showRegisterModal = () => {
-        setOpen(false);
-        setRegisterOpen(true);
-    };
     const handleLogin = async (values) => {
         setLoading(true);
 
         try {
-            const { username, password } = values;
+            const { displayname, email, username, password, phone, user_address } = values;
 
             // Check if both fields are not empty
             if (!username || !password) {
                 form.setFields([
                     {
                         name: 'username',
-                        errors: ['Please enter your username or email.'],
+                        errors: ['username cannot be blank.'],
                     },
                     {
                         name: 'password',
@@ -56,21 +49,30 @@ const LoginModal = ({ open, setOpen }) => {
                 return;
             }
 
+            //handle check username is taken or not
+
             // Send a POST request to your API for authentication
             const response = await fetch(
-                'http://34.101.200.253:8089/user/authenticate',
+                'http://34.101.200.253:8089/user/register',
                 {
                     method: 'POST',
                     headers: {
                         'Content-Type': 'application/json',
                     },
                     body: JSON.stringify({
-                        'username': username,
-                        'password': password,
+                        "name": displayname,
+                        "email": email,
+                        "accountType":"customer",
+                        "username": username,
+                        "password":password,
+                        "whatsapp": phone,
+                        "lineId": "",
+                        "kakaoId":"",
+                        "agentId":"",
+                        "address": user_address
                     }),
                 }
             );
-
 
 
             // Check the response code and description
@@ -123,36 +125,30 @@ const LoginModal = ({ open, setOpen }) => {
     const handleCancel = () => {
         setOpen(false);
     };
-    
-    const handleRegister = () => {
-        
-    };
     // Function to handle form submission
     const onFinish = () => {
         // Programmatically trigger the click event on the login button
         document.getElementById('login-button').click();
     };
     return (
-        <>
-        <RegisterModal open={registerOpen} setOpen={setRegisterOpen} />
         <Modal
             open={open}
-            title="Login"
+            title="Register"
             className='min-w-[20%] pb-32'
             onCancel={handleCancel}
             footer={[
-                <Button key="register" onClick={showRegisterModal}>
-                    Register
+                <Button key="back" onClick={handleCancel}>
+                    Return
                 </Button>,
-                <Button id="login-button" key="login" loading={loading} onClick={handleOk}>
-                    Login
+                <Button id="register-button" key="register" loading={loading} onClick={handleOk}>
+                    Register
                 </Button>,
             ]}
         >
             <br />
             <Form
                 form={form}
-                name="loginForm"
+                name="registerForm"
                 {...formItemLayout}
                 initialValues={{}}
                 style={{
@@ -160,12 +156,24 @@ const LoginModal = ({ open, setOpen }) => {
                 }}
             >
                 <Form.Item
-                    label="Username/Email"
+                    label="Username"
                     name="username"
                     rules={[
                         {
                             required: true,
-                            message: 'Please enter your username or email.',
+                            message: 'Please choose your username.',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    label="Email"
+                    name="email"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please enter your email.',
                         },
                     ]}
                 >
@@ -177,7 +185,7 @@ const LoginModal = ({ open, setOpen }) => {
                     rules={[
                         {
                             required: true,
-                            message: 'Please enter your password.',
+                            message: 'minimum length is 8 character,\nmust contain numbers and character',
                         },
                     ]}
                 >
@@ -186,11 +194,22 @@ const LoginModal = ({ open, setOpen }) => {
                         iconRender={(visible) => (visible ? <EyeTwoTone /> : <EyeInvisibleOutlined />)}
                     />
                 </Form.Item>
+                <Form.Item
+                    label="Phone/WA"
+                    name="whatsapp"
+                    rules={[
+                        {
+                            required: false,
+                            message: 'Please enter your phone number / whatsapp number',
+                        },
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
             </Form>
 
         </Modal>
-        </>
     );
 };
 
-export default LoginModal;
+export default RegisterModal;

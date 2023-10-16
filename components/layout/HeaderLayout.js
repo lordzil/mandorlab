@@ -42,11 +42,10 @@ const Header = () => {
   const {user, logout} = useAuth();
   const router = useRouter();
   const [api, contextHolder] = notification.useNotification();
-  const openNotification = (placement) => {
+  const openNotification = (placement,description) => {
     api.info({
-      message: `Notification ${placement}`,
-      description:
-        'Click the icon below to open the quotation request form!',
+      message: `Let's connect!`,
+      description: description,
       placement,
       style: {
         bottom: 100, // Adjust the offset value as needed
@@ -93,7 +92,7 @@ const Header = () => {
             ))}
             <li>
               <p className='text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4'
-                onClick={() => openNotification('bottomRight')}>{t("NAV_LABEL_NEW_QUOTATION")}</p>
+                onClick={() => openNotification('bottom-right',t("NOTIF_INFO_NEW_QUOTATION"))}>{t("NAV_LABEL_NEW_QUOTATION")}</p>
             </li>
           </ul>
           <ul className="flex">
@@ -110,7 +109,7 @@ const Header = () => {
               <p className='text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md'
                 onClick={() => user.isAuth ? handleLogout() : showModal()}
               >
-                {user.isAuth ? t("Logout") : t("Login")}
+                {user.isAuth ? t("Logout") : t("Login | Register")}
               </p>
             </li>
 

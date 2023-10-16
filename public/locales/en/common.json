@@ -8,6 +8,7 @@
     "NAV_LABEL_EVENT": "Event",
     "NAV_LABEL_SUPPORT": "Support",
     "NAV_LABEL_NEW_QUOTATION": "Create Quotation",
-    "NAV_LABEL_USER_AREA": "User Area"
+    "NAV_LABEL_USER_AREA": "User Area",
+    "NOTIF_INFO_NEW_QUOTATION": "Click on the icon here to start consulting with us via Whatsapp, or submit your request via quotation request form."
 
 }
