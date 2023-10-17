@@ -7,7 +7,6 @@ import {
     Cascader,
     Checkbox,
     DatePicker,
-    ColorPicker,
     Form,
     Input,
     InputNumber,
