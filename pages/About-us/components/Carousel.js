@@ -1,36 +1,39 @@
-import { Carousel } from 'antd';
+import { Carousel } from "antd";
+import CarouselContent from "./CarouselContent";
 
 const contentStyle = {
-  height: '300px',
-  color: '#fff',
-  lineHeight: '300px',
-  textAlign: 'center',
-  background: '#EA580C',
-  arrow: 'true',
-  autoplaySpeed: 5000
+  display: "flex",
+  justifyContent: "center",
+  alignItems: "center",
+  flexDirection: "column",
+  lineHeight: "200px",
+  textAlign: "center",
+  arrow: "true",
+  autoplaySpeed: 5000,
+  zIndex: 999999999
 };
 
 const CarouselLayout = () => {
   return (
-    <div className='-z-10 sticky pb-32'>
-    <Carousel autoplay>
-    <div>
-      <h3 style={contentStyle}>1</h3>
+    <div className="-z-10 sticky pb-32 staticCarousel">
+      <Carousel
+        autoplay
+        style={{
+          width: "100%",
+          height: "300px",
+          maxHeight: "300px",
+          display: " flex",
+          flexDirection: "column",
+          justifyContent: "center"
+        }}
+      >
+        <CarouselContent />
+        <CarouselContent />
+        <CarouselContent />
+      </Carousel>
     </div>
-    <div>
-      <h3 style={contentStyle}>2</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>3</h3>
-    </div>
-    <div>
-      <h3 style={contentStyle}>4</h3>
-    </div>
-  </Carousel>
-  </div>
-    );
+  );
 };
-
 
 /*
 const Carousel = () => {

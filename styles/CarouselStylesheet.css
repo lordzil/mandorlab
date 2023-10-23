@@ -1,0 +1,16 @@
+/* .carousel-container {
+  background: url('../../../public/banner_background_ornament.png') no-repeat center center fixed;
+  background-size: cover;
+} */
+
+.staticCarousel {
+  background-image: url('../public/banner_background_ornament.png') ;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-color: orangered;
+  /* height: 300px; */
+  /* width: 100%;
+  height: 100%;  */
+  /* Set the desired height */
+}

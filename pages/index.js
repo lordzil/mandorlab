@@ -1,40 +1,42 @@
-import RootLayout from '@/components/layout/PageLayout';
-import { useTranslation } from 'next-i18next'
-import Carousel from '@/pages/(about_us)/carousel';
-import Page from '@/pages/(about_us)/page';
+import RootLayout from "@/components/layout/PageLayout";
+import { useTranslation } from "next-i18next";
+// import Carousel from "@/pages/Homepage/components/carousel";
+import About from "./About-us/About";
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
+import { useState } from "react";
+// import HeaderLayout from "./user_area/layout/HeaderLayout";
 
 export async function getStaticProps(context) {
   try {
     // extract the locale identifier from the URL
-  const { locale } = context
+    const { locale } = context;
 
-  return {
-    props: {
-      // pass the translation props to the page component
-      ...(await serverSideTranslations(locale)),
-    },
-  }
+    return {
+      props: {
+        // pass the translation props to the page component
+        ...(await serverSideTranslations(locale))
+      }
+    };
   } catch (error) {
-    return {}
+    return {};
   }
-  
 }
 
-const Home = () => {
-  const { t } = useTranslation()
+const LandingPage = () => {
+  const { t } = useTranslation();
+  const [quotationModalState, setQuotationModalState] = useState(false);
   return (
     <div>
-      <Carousel />
-      <Page />
+      <About />
     </div>
-    
   );
 };
-
-Home.getLayout = (page) => {
-  return <RootLayout>{page}</RootLayout>
+// LandingPage.getLayout = (page) => {
+//   return <HeaderLayout>{page}</HeaderLayout>;
+// };
+LandingPage.getLayout = (page) => {
+  return <RootLayout>{page}</RootLayout>;
 };
 
-export default Home;
+export default LandingPage;

@@ -21,3 +21,13 @@ body {
   }
   /* ... */
 }
+
+.staticCarousel {
+  background-image: url('../public/banner_background_ornament.svg') ;
+  background-size: cover;
+  background-position: center;
+  /* background-repeat: no-repeat; */
+  background-color: #FB923C;
+  /* background-size: contain; */
+  background-repeat: no-repeat;
+}
