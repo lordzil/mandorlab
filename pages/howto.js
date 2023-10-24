@@ -1,45 +1,43 @@
-import Image from 'next/image';
-import RootLayout from '@/components/layout/PageLayout';
-import React, { useState } from 'react';
-import { useTranslation } from 'next-i18next'
-import { Button, message, Steps, theme } from 'antd';
+import Image from "next/image";
+import RootLayout from "@/components/layout/PageLayout";
+import React, { useState } from "react";
+import { Button, message, Steps, theme } from "antd";
+import { useTranslation } from "next-i18next";
 
-import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 
 export async function getStaticProps(context) {
   try {
     // extract the locale identifier from the URL
-  const { locale } = context
+    const { locale } = context;
 
-  return {
-    props: {
-      // pass the translation props to the page component
-      ...(await serverSideTranslations(locale)),
-    },
-  }
+    return {
+      props: {
+        // pass the translation props to the page component
+        ...(await serverSideTranslations(locale))
+      }
+    };
   } catch (error) {
-    return {}
+    return {};
   }
-  
 }
 
 const steps = [
   {
-    title: 'First',
-    content: 'First-content',
+    title: "First",
+    content: "First-content"
   },
   {
-    title: 'Second',
-    content: 'Second-content',
+    title: "Second",
+    content: "Second-content"
   },
   {
-    title: 'Last',
-    content: 'Last-content',
-  },
+    title: "Last",
+    content: "Last-content"
+  }
 ];
 const Howto = () => {
-  
-  const { t } = useTranslation()
+  const { t } = useTranslation();
   const { token } = theme.useToken();
   const [current, setCurrent] = useState(0);
   const next = () => {
@@ -50,40 +48,46 @@ const Howto = () => {
   };
   const items = steps.map((item) => ({
     key: item.title,
-    title: item.title,
+    title: item.title
   }));
   const contentStyle = {
-    lineHeight: '260px',
-    textAlign: 'center',
+    lineHeight: "260px",
+    textAlign: "center",
     //color: token.colorTextTertiary,
     //backgroundColor: token.colorFillAlter,
     //borderRadius: token.borderRadiusLG,
     //border: `1px dashed ${token.colorBorder}`,
-    marginTop: 16,
+    marginTop: 16
   };
   return (
-    <main className='flex flex-col max-h-100vh mx-auto max-w-3xl px-4 pt-32 pb-32 scroll-smooth md:scroll-auto'>
+    <main className="flex flex-col max-h-100vh mx-auto max-w-3xl px-4 pt-32 pb-32 scroll-smooth md:scroll-auto">
       <Steps current={current} items={items} />
       <div style={contentStyle}>{steps[current].content}</div>
       <div
         style={{
-          marginTop: 24,
+          marginTop: 24
         }}
       >
         {current < steps.length - 1 && (
-          <Button className='bg-orange-400 text-white hover:bg-orange-800 hover:text-white' onClick={() => next()}>
+          <Button
+            className="bg-orange-400 text-white hover:bg-orange-800 hover:text-white"
+            onClick={() => next()}
+          >
             Next
           </Button>
         )}
         {current === steps.length - 1 && (
-          <Button type="primary" onClick={() => message.success('Processing complete!')}>
+          <Button
+            type="primary"
+            onClick={() => message.success("Processing complete!")}
+          >
             Done
           </Button>
         )}
         {current > 0 && (
           <Button
             style={{
-              margin: '0 8px',
+              margin: "0 8px"
             }}
             onClick={() => prev()}
           >

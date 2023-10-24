@@ -14,11 +14,11 @@ const menuItems = [
   // { label: `NAV_LABEL_HOW_TO`, url: `/howto` },
   // { label: `NAV_LABEL_SERVICES`, url: `/services` },
   // { label: `NAV_LABEL_EVENT`, url: `/event` },
-  { label: `NAV_LABEL_REVIEW`, url: `/Review` },
-  { label: `NAV_LABEL_EVENT`, url: `/event` },
+  { label: `NAV_LABEL_REVIEW`, url: `/review` },
+  { label: `NAV_LABEL_EVENT`, url: `/event` }
   // { label: `NAV_LABEL_SUPPORT`, url: `/support` }
   //{ label: `NAV_LABEL_SUPPORT`, url: `/newsletter` },
-  { label: `NAV_LABEL_SUPPORT`, url: `/quotation` }
+  // { label: `NAV_LABEL_NEW_QUOTATION`, url: `/quotation` }
   // { label: `NAV_LABEL_USER_AREA`, url: `/user_area/projects` }
   //   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/profile` },
   //   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/quotation` },

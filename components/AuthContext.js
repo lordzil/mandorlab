@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
-import { useCookies } from 'react-cookie';
-import jwtDecode from 'jwt-decode';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { useCookies } from "react-cookie";
+import jwtDecode from "jwt-decode";
 
 const AuthContext = createContext();
 
@@ -9,7 +9,7 @@ export function useAuth() {
 }
 
 export function AuthProvider({ children }) {
-  const [cookies, setCookie, removeCookie] = useCookies(['user_jwt'])
+  const [cookies, setCookie, removeCookie] = useCookies(["user_jwt"]);
   const [user, setUser] = useState({ isAuth: false, username: null });
 
   useEffect(() => {
@@ -17,37 +17,38 @@ export function AuthProvider({ children }) {
     if (token) {
       // Validate the token on the server-side or using a library like jwt-decode
       //const isValid = validateToken(token);
-      const tokenPayload = jwtDecode(token)
+      const tokenPayload = jwtDecode(token);
 
       if (tokenPayload) {
         setUser({ isAuth: true, username: tokenPayload.sub });
       } else {
         // Token is invalid, remove it
-        removeCookie('user_jwt');
+        removeCookie("user_jwt");
         setUser({ isAuth: false, username: null });
       }
     }
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   const login = (jwtToken) => {
     // Set the JWT cookie
-    const tokenPayload = jwtDecode(jwtToken)
-    console.log(jwtToken)
-    setCookie('user_jwt', jwtToken, { path: '/', maxAge: 36000 }); // Adjust maxAge accordingly
-    setUser({ isAuth: true , username: tokenPayload.sub });
-    localStorage.setItem('username', tokenPayload.sub)
-    localStorage.setItem('email', tokenPayload.auth)
-    localStorage.setItem('userid', tokenPayload.id)
-    console.log('loggend in')
+    const tokenPayload = jwtDecode(jwtToken);
+    console.log(jwtToken);
+    setCookie("user_jwt", jwtToken, { path: "/", maxAge: 36000 }); // Adjust maxAge accordingly
+    setUser({ isAuth: true, username: tokenPayload.sub });
+    localStorage.setItem("username", tokenPayload.sub);
+    localStorage.setItem("email", tokenPayload.auth);
+    localStorage.setItem("userid", tokenPayload.id);
+    localStorage.setItem("token", jwtToken);
+    console.log("loggend in");
   };
 
   const logout = () => {
     // Remove the JWT cookie
-    console.log("logging out")
-    removeCookie('user_jwt');
+    console.log("logging out");
+    removeCookie("user_jwt");
     setUser({ isAuth: false, username: null });
-    localStorage.clear()
+    localStorage.clear();
   };
 
   return (
