@@ -1,5 +1,5 @@
 // import Image from "next/image";
-import { Image, Flex, Row, Col } from "antd";
+import { Flex, Row, Col } from "antd";
 import { Skeleton, Anchor } from "antd";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
@@ -26,116 +26,125 @@ export async function getStaticProps(context) {
 
 const Services = () => {
   const { t } = useTranslation();
-
+  const staticImage = [
+    {
+      url: "/images/service-icon/ac.png",
+      id: 1,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/ceiling.png",
+      id: 2,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/construction.png",
+      id: 3,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/door_n_window.png",
+      id: 4,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/electricity.png",
+      id: 5,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/floor.png",
+      id: 6,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/furniture.png",
+      id: 7,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/lan.png",
+      id: 8,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/one_day_service.png",
+      id: 9,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/park.png",
+      id: 10,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/pbx.png",
+      id: 11,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/pesticides.png",
+      id: 12,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/pipe.png",
+      id: 13,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/renovation.png",
+      id: 14,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/roof.png",
+      id: 15,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/wall.png",
+      id: 16,
+      desc: "Test 1 2 3"
+    },
+    {
+      url: "/images/service-icon/weld.png",
+      id: 17,
+      desc: "Test 1 2 3"
+    }
+  ];
+  let printedImage = "";
+  let content = "";
   return (
-    <>
-      <main
-        className="flex flex-col h-screen m-auto"
+    // <>
+    <main className="flex justify-center items-center min-h-screen">
+      <div
+        class="grid grid-cols-2 md:grid-cols-4 gap-4 m-4 "
         style={{
           position: "relative",
           zIndex: -1,
           alignItems: "center"
         }}
       >
-        {/* <div>
-          <h2 className={title_style}>{t("SERVICES")}</h2>
-          <p className=" text-gray-700 text-justify">{t("SERVICES_TEXT")}</p>
-        </div>
-        <div className="flex row-3 m-10"></div> */}
-        {/* <Row gutter={18}>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              // width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              // width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              // width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-        </Row>
-        <Row gutter={18}>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-        </Row>
-        <Row gutter={18}>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-        </Row>
-        <Row gutter={16}>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-          <Col className="gutter-row" span={6}>
-            <Image
-              className="servicesImage"
-              width={200}
-              src="https://zos.alipayobjects.com/rmsportal/jkjgkEfvpUPVyRjUImniVslZfWPnJuuZ.png"
-            />
-          </Col>
-        </Row> */}
-      </main>
-    </>
+        {staticImage.map((e) => {
+          return (
+            <div className="servicesImage">
+              <img
+                key={e.id}
+                className="rounded-lg"
+                // style={{
+                //   width: "30% !important",
+                //   height: "30% !important"
+                //   // display: "block"
+                // }}
+                src={e.url}
+                alt=""
+              />
+            </div>
+          );
+        })}
+      </div>
+    </main>
   );
 };
 Services.getLayout = (page) => {

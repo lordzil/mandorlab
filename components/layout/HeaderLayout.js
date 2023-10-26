@@ -110,7 +110,7 @@ const Header = ({ children }) => {
             ))}
             <li>
               <p
-                className={`text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4 text-white`}
+                className={`text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4 text-white cursorPointer`}
                 onClick={
                   () =>
                     children.props.toggleQuotation(
@@ -130,7 +130,7 @@ const Header = ({ children }) => {
             {user.isAuth ? (
               <li className="flex items-center px-2">
                 <Link href="/user_area/projects">
-                  <p className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md">
+                  <p className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md cursorPointer">
                     {" "}
                     {t("NAV_LABEL_USER_AREA")}
                   </p>
@@ -141,8 +141,7 @@ const Header = ({ children }) => {
             )}
             <li className="flex items-center px-2">
               <p
-                className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md"
-                style={{ poin }}
+                className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md cursorPointer"
                 onClick={() => (user.isAuth ? handleLogout() : showModal())}
               >
                 {user.isAuth ? t("Logout") : t("Login | Register")}
