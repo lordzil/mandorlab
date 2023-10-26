@@ -15,10 +15,10 @@ const menuItems = [
   { label: `NAV_LABEL_SERVICES`, url: `/services` },
   // { label: `NAV_LABEL_EVENT`, url: `/event` },
   { label: `NAV_LABEL_REVIEW`, url: `/review` },
-  { label: `NAV_LABEL_EVENT`, url: `/event` },
+  { label: `NAV_LABEL_EVENT`, url: `/event` }
   // { label: `NAV_LABEL_SUPPORT`, url: `/support` }
   //{ label: `NAV_LABEL_SUPPORT`, url: `/newsletter` },
-  { label: `NAV_LABEL_NEW_QUOTATION`, url: `/quotation` }
+  // { label: `NAV_LABEL_NEW_QUOTATION`, url: `/quotation` }
   // { label: `NAV_LABEL_USER_AREA`, url: `/user_area/projects` }
   //   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/profile` },
   //   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/quotation` },
@@ -31,6 +31,22 @@ const ActiveMenuLink = ({ children, href }) => {
   const pathname = usePathname();
   const active = href === pathname;
   //console.log(pathname)
+  // if (type === "button") {
+  //   return (
+  //     <Link
+  //       onClick={() =>
+  //         children.props.toggleQuotation(!children.props.toggleQuotationStatus)
+  //       }
+  //       href={href}
+  //       scroll={true}
+  //       className={`text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4 ${
+  //         active ? "text-orange-400 font-semibold" : "text-white"
+  //       }`}
+  //     >
+  //       {children}
+  //     </Link>
+  //   );
+  // } else {
   return (
     <Link
       href={href}
@@ -42,22 +58,23 @@ const ActiveMenuLink = ({ children, href }) => {
       {children}
     </Link>
   );
+  // }
 };
 
-const Header = () => {
+const Header = ({ children }) => {
   const { user, logout } = useAuth();
   const router = useRouter();
   const [api, contextHolder] = notification.useNotification();
-  const openNotification = (placement, description) => {
-    api.info({
-      message: `Let's connect!`,
-      description: description,
-      placement,
-      style: {
-        bottom: 100 // Adjust the offset value as needed
-      }
-    });
-  };
+  // const openNotification = (placement, description) => {
+  //   api.info({
+  //     message: `Let's connect!`,
+  //     description: description,
+  //     placement,
+  //     style: {
+  //       bottom: 100 // Adjust the offset value as needed
+  //     }
+  //   });
+  // };
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
@@ -91,19 +108,23 @@ const Header = () => {
                 <ActiveMenuLink href={url}>{t(label)}</ActiveMenuLink>
               </li>
             ))}
-            {/* <li>
+            <li>
               <p
-                className="text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4"
-                onClick={() =>
-                  openNotification(
-                    "bottom-right",
-                    t("NOTIF_INFO_NEW_QUOTATION")
-                  )
+                className={`text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4 text-white`}
+                onClick={
+                  () =>
+                    children.props.toggleQuotation(
+                      !children.props.toggleQuotationStatus
+                    )
+                  // openNotification(
+                  //   "bottom-right",
+                  //   t("NOTIF_INFO_NEW_QUOTATION")
+                  // )
                 }
               >
                 {t("NAV_LABEL_NEW_QUOTATION")}
               </p>
-            </li> */}
+            </li>
           </ul>
           <ul className="flex">
             {user.isAuth ? (
@@ -121,6 +142,7 @@ const Header = () => {
             <li className="flex items-center px-2">
               <p
                 className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md"
+                style={{ poin }}
                 onClick={() => (user.isAuth ? handleLogout() : showModal())}
               >
                 {user.isAuth ? t("Logout") : t("Login | Register")}

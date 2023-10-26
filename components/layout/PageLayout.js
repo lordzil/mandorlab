@@ -9,20 +9,27 @@ import { useRouter } from "next/router";
 const RootLayout = ({ children }) => {
   const [open, setOpen] = useState(false);
   const showModal = () => {
+    // children.props.toggleQuotation(!children.props.toggleQuotationStatus);
     setOpen(true);
   };
-  const router = useRouter();
+  // const router = useRouter();
   useEffect(() => {
-    // Check if the current pathname includes "homepage/something"
-    if (router.pathname.includes("quotation")) {
+    if (children.props.toggleQuotationStatus) {
       setOpen(true);
+    } else {
+      setOpen(false);
     }
-  }, [router.pathname]);
+    //   // Check if the current pathname includes "homepage/something"
+    //   // if (router.pathname.includes("quotation")) {
+    //   //   // children.props.toggleQuotation(true);
+    //   //   setOpen(true);
+    //   // }
+  }, [children.props.toggleQuotationStatus]);
 
   return (
     <div className="">
       <div className="sticky top-0 pt-8 bg-white">
-        <Header />
+        <Header children={children} />
       </div>
 
       <div className="">{children}</div>

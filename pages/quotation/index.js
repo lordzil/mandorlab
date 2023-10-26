@@ -5,6 +5,7 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import { useEffect, useState, useRef } from "react";
 import RootLayout from "@/components/layout/PageLayout";
 import About from "../About-us/About";
+import { useRouter } from "next/router";
 
 const title_style =
   "text-3xl font-bold font-tilt text-gray-900 leading-[1.4] mb-5";
@@ -23,7 +24,12 @@ export async function getStaticProps(context) {
   }
 }
 const CreateQuotation = (props) => {
-  // const [isOpenQuotation, setIsOpenQuotation] = useState(false);
+  const [lastVisitedPage, setLastVisitedPage] = useState("");
+
+  // useEffect(() => {
+  //   // Store the current route in state when the route changes
+  //   setLastVisitedPage(router.asPath);
+  // }, [router.asPath]);// const [isOpenQuotation, setIsOpenQuotation] = useState(false);
   // const isFirstRender = useRef(true);
   // useEffect(() => {
   //   if (isFirstRender.current) {
@@ -40,10 +46,6 @@ const CreateQuotation = (props) => {
   return;
 };
 CreateQuotation.getLayout = (page) => {
-  return (
-    <RootLayout>
-      <About />
-    </RootLayout>
-  );
+  return <RootLayout>{page}</RootLayout>;
 };
 export default CreateQuotation;

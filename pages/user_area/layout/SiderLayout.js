@@ -81,8 +81,6 @@ const menuStyle = {
 };
 
 const SiderLayout = (props) => {
-  console.log("@@@ SiderLayout", props);
-
   return (
     <Sider collapsed={props.collapsed} style={siderStyle} width={300}>
       <div>

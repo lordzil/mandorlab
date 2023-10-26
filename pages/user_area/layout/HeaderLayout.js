@@ -4,7 +4,6 @@ import LanguageSwitcher from "@/components/LanguageSwitcher";
 import { MenuOutlined } from "@ant-design/icons";
 
 const HeaderLayout = (props) => {
-  console.log("@@@ HeaderLayout", props);
   const [search, setSearch] = useState("");
   const { t } = useTranslation();
   return (

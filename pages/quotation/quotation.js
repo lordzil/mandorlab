@@ -7,23 +7,23 @@ import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 const title_style =
   "text-3xl font-bold font-tilt text-gray-900 leading-[1.4] mb-5";
 
-export async function getStaticProps(context) {
-  try {
-    // extract the locale identifier from the URL
-    const { locale } = context;
+// export async function getStaticProps(context) {
+//   try {
+//     // extract the locale identifier from the URL
+//     const { locale } = context;
 
-    return {
-      props: {
-        // pass the translation props to the page component
-        ...(await serverSideTranslations(locale))
-      }
-    };
-  } catch (error) {
-    return {};
-  }
-}
+//     return {
+//       props: {
+//         // pass the translation props to the page component
+//         ...(await serverSideTranslations(locale))
+//       }
+//     };
+//   } catch (error) {
+//     return {};
+//   }
+// }
 const Quotation = () => {
-  const { t } = useTranslation();
+  // const { t } = useTranslation();
   return (
     <main className="flex flex-col min-h-screen mx-auto max-w-3xl px-4 pt-4 pb-32 scroll-smooth md:scroll-auto">
       <div>

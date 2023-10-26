@@ -30,8 +30,6 @@ export default function review() {
   const { t } = useTranslation();
 
   // const cookies = useCookies(["user_jwt"]);
-  // console.log("@@@", cookies);
-  // console.log("@@@", localStorage.getItem("token"));
   useEffect(() => {
     // getStaticProps();
     // if (cookies) {
