@@ -5,7 +5,20 @@ import Carousel from "./components/Carousel";
 
 const title_style =
   "text-3xl font-bold font-tilt text-gray-900 leading-[1.4] mb-5";
-
+export async function getStaticProps(context) {
+  try {
+    // extract the locale identifier from the URL
+    const { locale } = context;
+    return {
+      props: {
+        // pass the translation props to the page component
+        ...(await serverSideTranslations(locale))
+      }
+    };
+  } catch (error) {
+    return {};
+  }
+}
 const About = () => {
   const { t } = useTranslation();
   return (
@@ -98,6 +111,10 @@ const About = () => {
       </main>
     </>
   );
+};
+
+About.getLayout = (page) => {
+  return <RootLayout>{page}</RootLayout>;
 };
 
 export default About;

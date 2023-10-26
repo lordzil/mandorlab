@@ -31,3 +31,8 @@ body {
   /* background-size: contain; */
   background-repeat: no-repeat;
 }
+
+.servicesImage {  
+  /* background: '#0092ff'; */
+  margin: '8px 8px 8px 8px' 
+}

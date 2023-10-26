@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { usePathname } from "next/navigation";
 import { useRouter, scrollTo } from "next/router"; // Import useRouter
 import { useTranslation } from "next-i18next";
@@ -12,13 +12,13 @@ import { useAuth } from "../AuthContext";
 const menuItems = [
   { label: `NAV_LABEL_ABOUT_US`, url: `/` },
   // { label: `NAV_LABEL_HOW_TO`, url: `/howto` },
-  // { label: `NAV_LABEL_SERVICES`, url: `/services` },
+  { label: `NAV_LABEL_SERVICES`, url: `/services` },
   // { label: `NAV_LABEL_EVENT`, url: `/event` },
   { label: `NAV_LABEL_REVIEW`, url: `/review` },
-  { label: `NAV_LABEL_EVENT`, url: `/event` }
+  { label: `NAV_LABEL_EVENT`, url: `/event` },
   // { label: `NAV_LABEL_SUPPORT`, url: `/support` }
   //{ label: `NAV_LABEL_SUPPORT`, url: `/newsletter` },
-  // { label: `NAV_LABEL_NEW_QUOTATION`, url: `/quotation` }
+  { label: `NAV_LABEL_NEW_QUOTATION`, url: `/quotation` }
   // { label: `NAV_LABEL_USER_AREA`, url: `/user_area/projects` }
   //   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/profile` },
   //   { label: `NAV_LABEL_USER_AREA`, url: `/user_area/quotation` },
@@ -91,7 +91,7 @@ const Header = () => {
                 <ActiveMenuLink href={url}>{t(label)}</ActiveMenuLink>
               </li>
             ))}
-            <li>
+            {/* <li>
               <p
                 className="text-xs font-lato md:text-sm hover:bg-orange-200 hover:text-red-900 block py-2 md:py-3 px-2 md:px-4"
                 onClick={() =>
@@ -103,7 +103,7 @@ const Header = () => {
               >
                 {t("NAV_LABEL_NEW_QUOTATION")}
               </p>
-            </li>
+            </li> */}
           </ul>
           <ul className="flex">
             {user.isAuth ? (

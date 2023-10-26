@@ -1,15 +1,24 @@
 import Header from "./HeaderLayout";
 import Footer from "./FooterLayout";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import QuotationModal from "../quotationModal";
 import { FloatButton } from "antd";
 import { WhatsAppOutlined } from "@ant-design/icons";
+import { useRouter } from "next/router";
 
 const RootLayout = ({ children }) => {
   const [open, setOpen] = useState(false);
   const showModal = () => {
     setOpen(true);
   };
+  const router = useRouter();
+  useEffect(() => {
+    // Check if the current pathname includes "homepage/something"
+    if (router.pathname.includes("quotation")) {
+      setOpen(true);
+    }
+  }, [router.pathname]);
+
   return (
     <div className="">
       <div className="sticky top-0 pt-8 bg-white">

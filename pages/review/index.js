@@ -24,17 +24,19 @@ export async function getStaticProps(context) {
   }
 }
 
-const review = () => {
+export default function review() {
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState(null);
   const { t } = useTranslation();
 
-  const [cookies] = useCookies(["user_jwt"]);
+  // const cookies = useCookies(["user_jwt"]);
   // console.log("@@@", cookies);
   // console.log("@@@", localStorage.getItem("token"));
   useEffect(() => {
     // getStaticProps();
+    // if (cookies) {
     getQuotationList();
+    // }
   }, []);
 
   const getQuotationList = async () => {
@@ -45,7 +47,7 @@ const review = () => {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
-          Authorization: `Bearer ${useCookies(["user_jwt"])}`
+          Authorization: `Bearer eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjEiLCJhdXRoIjoiYWRtaW4xQG1hbmRvcmxhYnMuY29tIiwiaWQiOiIxIiwiaWF0IjoxNjk4MjU1NjY0LCJleHAiOjE2OTgyNjEwNjR9.5me-m0McYl98bTNhKsZV2RIBJSMpH9Q8fgTU9Dh_GpA`
         }
       });
       setData(response);
@@ -59,7 +61,8 @@ const review = () => {
   return (
     <main className="flex flex-col min-h-screen mx-auto max-w-3xl px-4 pt-4 pb-32 scroll-smooth md:scroll-auto">
       <div>
-        <h2 className={title_style}>{t("REVIEW")}</h2>
+        {/* <h2 className={title_style}>{t("REVIEW")}</h2> */}
+        <h2 className={title_style}>{"REVIEW"}</h2>
       </div>
       <div className="flex row-3 m-10">
         <section>
@@ -144,9 +147,9 @@ const review = () => {
       </div>
     </main>
   );
-};
+}
 
 review.getLayout = (page) => {
   return <RootLayout>{page}</RootLayout>;
 };
-export default review;
+// export default review;
