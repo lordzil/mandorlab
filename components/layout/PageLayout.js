@@ -27,8 +27,8 @@ const RootLayout = ({ children }) => {
   }, [children.props.toggleQuotationStatus]);
 
   return (
-    <div className="">
-      <div className="sticky top-0 pt-8 bg-white">
+    <div className="md:mx-auto">
+      <div className="sticky top-0 left-0 pt-8 bg-white">
         <Header children={children} />
       </div>
 

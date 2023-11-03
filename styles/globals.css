@@ -10,6 +10,7 @@ body {
   color: rgb(var(--foreground-rgb));
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
     sans-serif;
+  overflow-x: hidden;
 }
 
 @layer components {
@@ -38,8 +39,22 @@ body {
   /* align-content: center; */
   align-items: center;
   justify-content: center;
+  flex: 1;
+  
 }
 
 .cursorPointer {
   cursor: pointer !important;
+}
+
+
+.maxWidthHeight{
+  width: 150px !important;
+  height: 150px  !important;
+}
+
+.imageRowMax {
+  display: flex;
+  flex-direction: row;
+  flex: 1,
 }

@@ -4,6 +4,7 @@ import { Skeleton, Anchor } from "antd";
 import { useTranslation } from "next-i18next";
 import { serverSideTranslations } from "next-i18next/serverSideTranslations";
 import RootLayout from "@/components/layout/PageLayout";
+import { useState } from "react";
 // import Carousel from "./components/Carousel";
 
 const title_style =
@@ -113,33 +114,45 @@ const Services = () => {
       desc: "Test 1 2 3"
     }
   ];
-  let printedImage = "";
-  let content = "";
+  const separatedArrays = [];
+
+  // Define the number of elements in each inner array
+  const elementsPerArray = 5;
+
+  for (let i = 0; i < staticImage.length; i += elementsPerArray) {
+    // Use slice to extract a portion of the array containing 4 elements
+    const newArray = staticImage.slice(i, i + elementsPerArray);
+    separatedArrays.push(newArray);
+  }
+
+  const [clicked, setCliked] = useState("");
+
   return (
     // <>
-    <main className="flex justify-center items-center min-h-screen">
+    <main className="flex justify-center items-center min-h-screen md:container md:mx-auto">
       <div
-        class="grid grid-cols-2 md:grid-cols-4 gap-4 m-4 "
+        className="flex basis-full flex-col items-center"
         style={{
           position: "relative",
-          zIndex: -1,
-          alignItems: "center"
+          zIndex: -1
         }}
       >
-        {staticImage.map((e) => {
+        {separatedArrays.map((e) => {
           return (
-            <div className="servicesImage">
-              <img
-                key={e.id}
-                className="rounded-lg"
-                // style={{
-                //   width: "30% !important",
-                //   height: "30% !important"
-                //   // display: "block"
-                // }}
-                src={e.url}
-                alt=""
-              />
+            <div className="flex grow">
+              {e.map((e) => {
+                return (
+                  <img
+                    key={e.id}
+                    className="rounded-s-sm"
+                    src={e.url}
+                    alt=""
+                    height={"180px"}
+                    width={"180px"}
+                    // onClick={}
+                  />
+                );
+              })}
             </div>
           );
         })}
