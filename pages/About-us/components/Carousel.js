@@ -14,22 +14,44 @@ const contentStyle = {
 };
 
 const CarouselLayout = () => {
+  const imageArr = [
+    { id: 1, path: "/images/banner-icon/1.jpg" },
+    { id: 2, path: "/images/banner-icon/2.jpg" },
+    { id: 3, path: "/images/banner-icon/3.jpg" }
+  ];
   return (
     <div className="-z-10 sticky pb-32 staticCarousel">
       <Carousel
         autoplay
-        style={{
-          width: "100%",
-          height: "300px",
-          maxHeight: "300px",
-          display: " flex",
-          flexDirection: "column",
-          justifyContent: "center"
-        }}
+        style={
+          {
+            // width: "100%",
+            // height: "300px !important"
+            // maxHeight: "300px"
+            // display: " flex",
+            // flexDirection: "column",
+            // justifyContent: "center"
+          }
+        }
       >
+        {/* {imageArr.map((e) => {
+          <img src={`${e.path}`} />;
+        })} */}
+        {/* <CarouselContent />
         <CarouselContent />
-        <CarouselContent />
-        <CarouselContent />
+        <CarouselContent /> */}
+        <img
+          src={"/images/banner-icon/1.jpg"}
+          style={{ height: "300px", width: "100%" }}
+        />
+        <img
+          src={"/images/banner-icon/2.jpg"}
+          style={{ height: "300px", width: "100%" }}
+        />
+        <img
+          src={"/images/banner-icon/3.jpg"}
+          style={{ height: "300px", width: "100%" }}
+        />
       </Carousel>
     </div>
   );

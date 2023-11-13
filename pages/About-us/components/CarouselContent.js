@@ -1,6 +1,6 @@
 import React from "react";
 import { Card } from "antd";
-
+import Image from "../../../public/images/banner-icon/1.jpg";
 const contentStyle = {
   maxHeight: "200px !important",
   maxWidth: "200px !important"
@@ -16,16 +16,11 @@ const CarouselContent = (props) => {
         alignItems: "center",
         justifyContent: "center",
         width: "100% !important",
-        height: "100% !important"
+        height: "100% !important",
+        zIndex: 99999
       }}
     >
-      <Card
-        title="Card"
-        size="medium"
-        // style={{ maxHeight: "200px !important", maxWidth: "200px !important" }}
-      >
-        {/* <p>Card content</p> */}
-
+      {/* <Card title="Card" size="medium">
         <div className="flex items-center">
           <svg
             className="w-4 h-4 text-yellow-300 mr-1"
@@ -53,7 +48,12 @@ const CarouselContent = (props) => {
             consectetur adipiscing elit”
           </p>
         </div>
-      </Card>
+      </Card> */}
+      <Image
+        // style={{ width: "auto", height: "300px" }}
+        src={props.src}
+        alt=""
+      />
     </div>
   );
 };
