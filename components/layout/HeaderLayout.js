@@ -62,7 +62,7 @@ const ActiveMenuLink = ({ children, href }) => {
 };
 
 const Header = ({ children }) => {
-  const { user, logout } = useAuth();
+  // const { user, logout } = useAuth();
   const router = useRouter();
   const [api, contextHolder] = notification.useNotification();
   // const openNotification = (placement, description) => {
@@ -127,24 +127,26 @@ const Header = ({ children }) => {
             </li>
           </ul>
           <ul className="flex">
-            {user.isAuth ? (
-              <li className="flex items-center px-2">
-                <Link href="/user_area/projects">
-                  <p className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md cursorPointer">
-                    {" "}
-                    {t("NAV_LABEL_USER_AREA")}
-                  </p>
-                </Link>
-              </li>
-            ) : (
+            {/* {user.isAuth ? ( */}
+            <li className="flex items-center px-2">
+              <Link href="/user_area/projects">
+                <p className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md cursorPointer">
+                  {" "}
+                  {t("NAV_LABEL_USER_AREA")}
+                </p>
+              </Link>
+            </li>
+            {/* ) : (
               ""
-            )}
+            )} */}
             <li className="flex items-center px-2">
               <p
                 className="text-xs font-lato md:text-sm bg-orange-400 hover:bg-orange-200 text-red-900 py-1 px-3 md:px-5 rounded-md cursorPointer"
                 onClick={() => (user.isAuth ? handleLogout() : showModal())}
               >
-                {user.isAuth ? t("Logout") : t("Login | Register")}
+                {/* {user.isAuth ? t("Logout") : t("Login | Register")} */}
+                {t("Logout")}
+                {t("Login | Register")}
               </p>
             </li>
           </ul>

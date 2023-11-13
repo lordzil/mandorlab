@@ -20,17 +20,15 @@ function App({ Component, pageProps }) {
   const customProps = { toggle: true };
 
   return (
-    <AuthProvider>
-      {/* <HistoryProvider> */}
-      {getLayout(
-        <Component
-          toggleQuotation={toggleQuotationButton}
-          toggleQuotationStatus={toggleQuotation}
-          {...pageProps}
-        />
-      )}
-      {/* </HistoryProvider> */}
-    </AuthProvider>
+    // <AuthProvider>
+    getLayout(
+      <Component
+        toggleQuotation={toggleQuotationButton}
+        toggleQuotationStatus={toggleQuotation}
+        {...pageProps}
+      />
+    )
+    // </AuthProvider>
   );
 }
 
